@@ -11,8 +11,20 @@ export default function reducer(prevState, action) {
     case "LOG_OUT":
       cachedState = {
         ...prevState,
-        userData: action.userData,
+        userData: {},
         isLoggedIn: false,
+      };
+      break;
+    case "SELECT_INSTRUMENT":
+      cachedState = {
+        ...prevState,
+        instrument: action.instrument,
+      };
+      break;
+    case "RECORDED_VIDEO":
+      cachedState = {
+        ...prevState,
+        video_url: action.video_url,
       };
       break;
     default:
