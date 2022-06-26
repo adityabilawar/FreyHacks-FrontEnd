@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { IoMdExit } from "react-icons/io";
-import "../css/instrument.css";
+import "../css/select.css";
 import { Context } from "../states/Provider";
 import { useNavigate } from "react-router-dom";
 
