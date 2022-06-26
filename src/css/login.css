@@ -33,12 +33,10 @@
 
 .left {
     left: 0;
-    background-color: white;
 }
 
 .right {
     right: 0;
-    background: linear-gradient(102.83deg, #fdfdfd 8.31%, #f2d12a 83.33%);
 }
 
 .login-form{
