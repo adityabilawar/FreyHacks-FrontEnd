@@ -9,7 +9,7 @@ export default function Instrument() {
   const [, dispatch] = useContext(Context);
   return (
     <div class="background d-flex align-items-center flex-column">
-      <div class="title">Select your instrument</div>
+      <div class="title">Select your drink</div>
       <IoMdExit
         className="sign-out"
         size={40}
@@ -42,7 +42,7 @@ export default function Instrument() {
         </select>
         <button
           type="button"
-          class="btn btn-light"
+          class="btn btn-light join-btn"
           onClick={() => {
             navigate("/meeting");
           }}

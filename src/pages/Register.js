@@ -17,7 +17,7 @@ export default function Register() {
   const onCreateAccount = (e) => {
     e.preventDefault();
     axios
-      .post("https://waffle-hack-2022.herokuapp.com/users/register", {
+      .post("https://frey-hack-backend.herokuapp.com/users/register", {
         username,
         password,
       })

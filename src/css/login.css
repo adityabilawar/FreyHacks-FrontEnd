@@ -11,6 +11,7 @@
     width: 500px;
     height: 450px;
     background-color: white;
+    box-shadow: 0 5px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%)
 }
 
 .login-title {

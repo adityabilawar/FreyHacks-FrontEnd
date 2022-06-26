@@ -14,6 +14,8 @@
     height: 250px;
     border-radius: 200px;
     background-color: black;
+    box-shadow: 0 5px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%)
+
 }
 
 .container-0 {
@@ -56,7 +58,7 @@
     width: 250px;
     height: 200px;
     position: absolute;
-    bottom: 200px;
+    bottom: 150px;
 }
 
 h1{

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useContext } from "react";
 import io from "socket.io-client";
 import Peer from "simple-peer";
-import { FaPlay, FaShare, FaSignOutAlt, FaStop, FaCheck } from "react-icons/fa";
+import { FaBeer, FaShare, FaSignOutAlt, FaStop, FaCheck } from "react-icons/fa";
 import "../css/meeting.css";
 import fire from "../assets/hola-icegif-23.gif";
 import { Context } from "../states/Provider";
@@ -11,6 +11,7 @@ import { Buffer } from "buffer";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import axios from "axios";
+import cheer from "./cheering.mp3";
 
 const customStyles = {
   overlay: {
@@ -32,20 +33,18 @@ Modal.setAppElement("#root");
 
 window.Buffer = window.Buffer || Buffer;
 
-const getInstrument = (value) => {
+const getDrink = (value) => {
   switch (parseInt(value)) {
     case 0:
-      return "🎤";
+      return "👶🍼";
     case 1:
-      return "🎷";
+      return "🧒🧃";
     case 2:
-      return "🎸";
+      return "🧑🥤";
     case 3:
-      return "🎹 ";
-    case 4:
-      return "🎻";
+      return "👨🍺";
     default:
-      return "🥁";
+      return "👵🍷 ";
   }
 };
 
@@ -97,6 +96,7 @@ const Video = (props) => {
 
 const Room = (props) => {
   const navigate = useNavigate();
+  const videoRef = useRef(null);
 
   const [recording, setRecording] = useState(false);
   const [state, dispatch] = useContext(Context);
@@ -233,7 +233,7 @@ const Room = (props) => {
   }
 
   useEffect(() => {
-    socketRef.current = io.connect("https://waffle-hack-2022.herokuapp.com/");
+    socketRef.current = io.connect("https://frey-hack-backend.herokuapp.com/");
     createStream();
   }, []);
 
@@ -260,14 +260,14 @@ const Room = (props) => {
   return (
     <div class="background d-flex align-items-center justify-content-center flex-column">
       <div class="container-0">
-        <h1>{getInstrument(state.instrument)}</h1>
+        <h1>{getDrink(state.instrument)}</h1>
         <video muted class="user-video" ref={userVideo} autoPlay playsInline />
       </div>
 
       <div class="container-1">
         {peers[0] ? (
           <>
-            <h1>{getInstrument(1)}</h1>
+            <h1>{getDrink(2)}</h1>
             <Video peer={peers[0].peer} />
           </>
         ) : (
@@ -281,7 +281,7 @@ const Room = (props) => {
       <div class="container-2">
         {peers[1] ? (
           <>
-            <h1>{getInstrument(2)}</h1>
+            <h1>{getDrink(2)}</h1>
             <Video peer={peers[1].peer} />
           </>
         ) : (
@@ -295,7 +295,7 @@ const Room = (props) => {
       <div class="container-3">
         {peers[2] ? (
           <>
-            <h1>{getInstrument(3)}</h1>
+            <h1>{getDrink(2)}</h1>
             <Video peer={peers[2].peer} />
           </>
         ) : (
@@ -327,13 +327,12 @@ const Room = (props) => {
             }}
           />
         ) : (
-          <FaPlay
+          <FaBeer
             color="#5BF921"
             size={30}
             className="mx-5"
             onClick={() => {
-              startRecording();
-              setRecording(true);
+              videoRef.current.play();
             }}
           />
         )}
@@ -349,6 +348,7 @@ const Room = (props) => {
           />
         )}
       </div>
+      <video ref={videoRef} src={cheer}></video>
 
       <Modal
         isOpen={modalIsOpen}
@@ -372,9 +372,12 @@ const Room = (props) => {
               e.preventDefault();
 
               axios
-                .post("https://waffle-hack-2022.herokuapp.com/invite_friends", {
-                  email: friendEmail,
-                })
+                .post(
+                  "https://frey-hack-backend.herokuapp.com/invite_friends",
+                  {
+                    email: friendEmail,
+                  }
+                )
                 .then((res) => {
                   console.log(res.data);
                 })

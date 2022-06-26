@@ -16,7 +16,7 @@ export default function Login() {
     e.preventDefault();
 
     axios
-      .post("https://waffle-hack-2022.herokuapp.com/login", {
+      .post("https://frey-hack-backend.herokuapp.com/users/login", {
         username,
         password,
       })
@@ -34,9 +34,9 @@ export default function Login() {
 
   return (
     <div className="background">
-      <div class="split left">
+      <div class="split left d-flex justify-content-center align-items-center">
         <img
-          width={700}
+          width={500}
           src="https://cdn.discordapp.com/attachments/989949757751427117/990281327792242769/BeerUp.gif"
         />
       </div>

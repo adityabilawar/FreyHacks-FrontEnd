@@ -13,7 +13,7 @@
     font-size: 64px;
     line-height: 120%;    
     text-align: center;
-    color: white;
+    color: black;
     margin-top: 200px;
     
 }
@@ -25,6 +25,8 @@ select, option{
 .custom-select{
     width: 300px;
     margin-top: 60px;
+    box-shadow: 0 5px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%)
+
 }
 
 .sign-out{
@@ -36,4 +38,8 @@ select, option{
 
 button{
     font-family: 'Rubik';
+}
+
+.join-btn {
+    box-shadow: 0 5px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%)
 }
